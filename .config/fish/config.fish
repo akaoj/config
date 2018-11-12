@@ -16,6 +16,8 @@ abbr -a gu "git fetch --tags --prune --all"
 
 abbr -a gv "git diff HEAD --name-only --relative | xargs nvim"  # open all modified files in neovim
 
+abbr -a gw "git worktree"
+
 abbr -a l "less -SM +Gg -R"
 
 abbr -a v nvim
