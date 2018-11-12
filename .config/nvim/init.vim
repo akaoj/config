@@ -35,6 +35,9 @@ set wildmenu
 set complete=.,w,b,u,t,i
 set scrolloff=5  " Make vim scroll when the cursor is 5 lines above or below the limit
 
+" Show a live preview of the substitutions
+set inccommand=nosplit
+
 " open folders with a tree-style
 let g:netrw_banner=0
 let g:netrw_liststyle=3
