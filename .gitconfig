@@ -9,12 +9,12 @@
 	d = diff
 	pushf = push --force-with-lease  # push force
 	vlog = log --oneline --decorate --all --graph  # visual log
-[user]
-	email = valentin.bremond@gmail.com
-	name = Valentin Bremond
 [push]
 	default = simple
 [merge]
 	tool = nvimdiff
 [mergetool "nvimdiff"]
 	cmd = nvim -d "$BASE" "$LOCAL" "$REMOTE" "$MERGED" -u NONE -c '$wincmd w' -c 'wincmd J'
+
+[include]
+	path = .config/gitconfig_user
