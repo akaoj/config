@@ -13,6 +13,7 @@ set nocompatible
 set number
 set mouse=a
 
+set foldmethod=indent
 set foldlevel=99
 
 set colorcolumn=120  " display a vertical line at 120 characters
@@ -25,9 +26,6 @@ set breakindentopt=shift:1  " add a space before the continuation line (makes di
 set termguicolors
 
 set background=dark
-
-" Search for more auto-completion
-"set path+=**
 
 " Displays a menu when `:find <tab>`
 set wildmenu
@@ -66,7 +64,6 @@ let g:ale_python_pylint_options = '--disable E0401'
 " Set spaces as indentation for Python files
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType python set colorcolumn=80
-autocmd FileType python set foldmethod=indent
 "autocmd FileType jinja setlocal expandtab shiftwidth=4 tabstop=4
 
 autocmd FileType yaml,toml setlocal expandtab shiftwidth=2 tabstop=2
@@ -76,10 +73,16 @@ let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-"let g:syntastic_enable_perl_checker = 1
-"let g:syntastic_perl_checkers = ['perl', 'podchecker']
-
 " Display Syntastic errors with :lopen
 "let g:syntastic_always_populate_loc_list = 1
 
 colorscheme solarized
+
+" Run FZF when calling `:f` (needs FZF to be installed)
+cabbrev f FZF
+
+" Do not use arrow keys to navigate in the autocomplete menu (use <C-p> and
+" <C-n> as it's supposed to)
+let g:ycm_key_list_select_completion = ['<TAB>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>']
+let g:ycm_key_list_stop_completion = ['<Up>', '<Down>']

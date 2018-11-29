@@ -7,6 +7,7 @@
 	s = status
 	st = status
 	d = diff
+	dw = diff --word-diff=color --word-diff-regex=.  # display diffs like online tools (like GitHub or GitLab)
 	pushf = push --force-with-lease  # push force
 	vlog = log --oneline --decorate --all --graph  # visual log
 [push]
