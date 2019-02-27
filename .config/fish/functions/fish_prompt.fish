@@ -2,7 +2,7 @@
 function fish_prompt
 	set -l _last_status (echo $status)
 	set -l _arrow_color 00EE00 -o  # allow will change its color when the last command failed
-	set -l _date_color 00BB00 -o   # date is bold green
+	set -l _date_color A0A0A0 -o   # date is bold greyish
 	set -l _branch_color BBBBBB    # git branch color is white
 	set -l _pwd_color 525252       # light grey
 
