@@ -1,24 +1,73 @@
 # Overwrite default prompt
 function fish_prompt
 	set -l _last_status (echo $status)
-	set -l _arrow_color 00EE00 -o  # allow will change its color when the last command failed
-	set -l _date_color A0A0A0 -o   # date is bold greyish
-	set -l _branch_color BBBBBB    # git branch color is white
-	set -l _pwd_color 525252       # light grey
+	set -l _arrow_color 00EE00 -o  # green by default
+	set -l _date_color A0A0A0 -o  # bold greyish
 
-	# If root, print in bold red
-	if [ (whoami) = "root" ]
+	set -l _git_branch_color BBBBBB  # white
+	set -l _hostname_color 525252 -o  # bold light grey
+	set -l _pwd_color 525252  # light grey
+
+	set -l _jobs_color c54f00  # brown orange
+
+	set -l _k8s_color
+	set -l _k8s_context (k8s_get_context)
+
+	if [ "$_k8s_context" = "prod" ]
+		set _k8s_color FF0000 -o  # bold red
+	else if [ "$_k8s_context" = "preprod" ]
+		set _k8s_color FFFF00  # yellow
+	else if [ "$_k8s_context" = "dev" ]
+		set _k8s_color 00FF00  # green
+	else
+		set _k8s_color FF00FF  # magenta
+	end
+
+	# If root, print date in bold red
+	if test (whoami) = "root"
 		set _date_color FF0000 -o
 	end
 
-	if [ $_last_status != 0 ]
+	# If last command failed, print the arrow in red
+	if test "$_last_status" != 0
 		set _arrow_color FF0000 -o
 	end
 
+	set -l _git_branch (git_get_branch)
+	set -l _jobs (jobs_get_list)
+	set -l _nbre_jobs (count $_jobs)
+
 #   Prompt looks like (note the blank line before the actual prompt):
 #
-#   ┌/path/to/my/current/folder
-#   └─HH:mm:ss [git branch]>
-	printf '\n\u250C%s\n' (set_color $_pwd_color)(pwd)(set_color normal)
-	printf '\u2514\u2500%s %s%s ' (set_color $_date_color)(date '+%H:%M:%S') (set_color normal)(set_color $_branch_color)(git_get_branch)(set_color normal) (set_color $_arrow_color)'>'(set_color normal)
+#   ┌<hostname>:/path/to/my/current/folder
+#   │ <n> jobs: "<job>", "<job>", "<job>"
+#   └HH:mm:ss {<k8s cluster>} [<git branch>]>
+	printf '\n\u250C'  # ┌
+	printf '%s%s' (set_color $_hostname_color)(hostname -s)":"(set_color normal) (set_color $_pwd_color)(pwd)(set_color normal)  # <hostname>:<pwd>, i.e.: localhost:/home/user
+	printf '\n'
+
+	if test "$_nbre_jobs" -gt 0
+		printf '\u2502 %s job%s:' (set_color $_jobs_color)"$_nbre_jobs" (if test "$_nbre_jobs" -gt 1; printf 's'; end)
+		for i in (seq (count $_jobs))
+			printf ' "%s"' "$_jobs[$i]"
+			if test "$i" -ne "$_nbre_jobs"
+				printf ','
+			end
+		end
+		printf '%s\n' (set_color normal)
+	end
+
+	printf '\u2514'  # └
+	printf '%s' (set_color $_date_color)(date '+%H:%M:%S')(set_color normal)  # HH:mm:ss
+
+	if test "$_k8s_context" != ""
+		printf ' %s' (set_color $_k8s_color)"{$_k8s_context}"(set_color normal)  # <k8s cluster>, i.e.: {prod}
+	end
+
+	if test "$_git_branch" != ""
+		printf ' %s' (set_color $_git_branch_color)"["(git_get_branch)"]"(set_color normal)  # <git branch>, i.e: [master]
+	end
+
+	printf '%s' (set_color $_arrow_color)'>'(set_color normal)  # >
+	printf ' '
 end
