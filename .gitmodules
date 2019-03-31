@@ -13,3 +13,6 @@
 [submodule ".config/nvim/bundle/YouCompleteMe"]
 	path = .config/nvim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".config/nvim/bundle/vim-hcl"]
+	path = .config/nvim/bundle/vim-hcl
+	url = https://github.com/b4b4r07/vim-hcl
