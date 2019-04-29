@@ -13,6 +13,10 @@ set nocompatible
 set number
 set mouse=a
 
+" Smart search
+set ignorecase
+set smartcase
+
 set foldmethod=indent
 set foldlevel=99
 
