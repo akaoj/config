@@ -1,30 +1,35 @@
+set -x EDITOR nvim
+
 #################
 # Abbreviations #
 #################
 
-abbr -a f "fg %"
-
-abbr -a g git
-abbr -a gc git commit -m
-abbr -a gs git status
-abbr -a gb git branch
-abbr -a gd git diff
-abbr -a gdw git dw
-abbr -a gaa git add --all
-abbr -a gap "git add -N --all ;and git add --all --patch"
-abbr -a gl "git log origin/master.."  # display commits added on top of master
-abbr -a gcd "cd (git rev-parse --show-toplevel)"  # cd in the root folder of the directory
-abbr -a gu "git fetch --tags --prune --all"
-abbr -a gv "git diff HEAD --name-only --relative | xargs nvim"  # open all modified files in neovim
+# Git
+abbr -a g "git"
+abbr -a gaa "git add --all"
+abbr -a gap "git add -N --all ;and git add --all --patch"  # "git add patch"
+abbr -a gb "git branch"
+abbr -a gc "git commit"
+abbr -a gco "git checkout"
+abbr -a gcd "cd (git rev-parse --show-toplevel)"  # "git cd": cd in the root folder of the directory
+abbr -a gd "git diff origin/master"
+abbr -a gdh "git diff HEAD"
+abbr -a gl "git log origin/master.."  # "git log": displays commits added on top of master
+abbr -a glv "git log --oneline --decorate --all --graph"  # "git log visual": displays visual log
+abbr -a gp "git push"
+abbr -a gpf "git push --force-with-lease"
+abbr -a gs "git status"
+abbr -a gu "git fetch --tags --prune --all"  # "git update"
+abbr -a gvh "git diff HEAD --name-only | sed 's|^|'(git rev-parse --show-toplevel)'/|' | xargs $EDITOR"  # "git view head": open all modified files in the default editor
+abbr -a gvl "git diff HEAD~1 --name-only | sed 's|^|'(git rev-parse --show-toplevel)'/|' | xargs $EDITOR"  # "git view last": open all files from last commit in the default editor
 abbr -a gw "git worktree"
+abbr -a gwd "git diff --word-diff=color --word-diff-regex=. origin/master"  # "git word diff": displays diffs like online tools (i.e.: GitHub or GitLab)
 
+# Tooling
 abbr -a l "less -SM +Gg -R"
-
-abbr -a v nvim
-
-abbr -a tf terraform
+abbr -a f "fzf --preview='head -n $LINES {}' --tabstop=4 --multi | xargs --no-run-if-empty -- $EDITOR"
+abbr -a v "nvim"
+abbr -a tf "terraform"
 
 # Make ssh-add work
 setenv SSH_ENV $HOME/.ssh/environment
-
-set -x EDITOR nvim
