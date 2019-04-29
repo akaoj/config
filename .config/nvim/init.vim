@@ -83,6 +83,10 @@ cabbrev f FZF
 
 " Do not use arrow keys to navigate in the autocomplete menu (use <C-p> and
 " <C-n> as it's supposed to)
-let g:ycm_key_list_select_completion = ['<TAB>']
-let g:ycm_key_list_previous_completion = ['<S-TAB>']
+let g:ycm_key_list_select_completion = ['<C-n>']
+let g:ycm_key_list_previous_completion = ['<C-p>']
 let g:ycm_key_list_stop_completion = ['<Up>', '<Down>']
+
+let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-n>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-p>"

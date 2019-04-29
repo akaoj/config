@@ -16,3 +16,6 @@
 [submodule ".config/nvim/bundle/vim-hcl"]
 	path = .config/nvim/bundle/vim-hcl
 	url = https://github.com/b4b4r07/vim-hcl
+[submodule ".config/nvim/bundle/ultisnips"]
+	path = .config/nvim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
