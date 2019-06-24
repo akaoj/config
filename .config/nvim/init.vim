@@ -1,5 +1,8 @@
 execute pathogen#infect()
 
+" Don't interpret the first lines when opening files
+set nomodeline
+
 " Tabs
 set shiftwidth=4  " Make an indent correspond to 4 spaces
 set textwidth=0   " Disable line wrapping
@@ -67,8 +70,8 @@ let g:ale_python_pylint_executable = 'pylint-3'
 let g:ale_python_pylint_options = '--disable E0401'
 " Set spaces as indentation for Python files
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4
-autocmd FileType python set colorcolumn=80
-"autocmd FileType jinja setlocal expandtab shiftwidth=4 tabstop=4
+autocmd FileType python setlocal colorcolumn=80
+autocmd FileType jinja setlocal expandtab shiftwidth=4 tabstop=4
 
 autocmd FileType yaml,toml setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType sh setlocal expandtab shiftwidth=4 tabstop=4
@@ -85,12 +88,11 @@ colorscheme solarized
 " Run FZF when calling `:f` (needs FZF to be installed)
 cabbrev f FZF
 
-" Do not use arrow keys to navigate in the autocomplete menu (use <C-p> and
-" <C-n> as it's supposed to)
+" Do not use arrow keys to navigate in the autocomplete menu (use <C-p> and <C-n> as it's supposed to)
 let g:ycm_key_list_select_completion = ['<C-n>']
 let g:ycm_key_list_previous_completion = ['<C-p>']
 let g:ycm_key_list_stop_completion = ['<Up>', '<Down>']
 
-let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsExpandTrigger = "<S-Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-n>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
