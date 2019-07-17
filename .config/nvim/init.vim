@@ -24,6 +24,7 @@ set foldmethod=indent
 set foldlevel=99
 
 set colorcolumn=120  " display a vertical line at 120 characters
+set textwidth=119  " auto wrap text at 120 characters
 
 set linebreak  " do not split words over 2 lines
 set breakindent  " set the same indentation to the broke line than the original one
@@ -69,12 +70,10 @@ let g:ale_python_pylint_executable = 'pylint-3'
 " Disable import errors with Pylint
 let g:ale_python_pylint_options = '--disable E0401'
 " Set spaces as indentation for Python files
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4
-autocmd FileType python setlocal colorcolumn=80
 autocmd FileType jinja setlocal expandtab shiftwidth=4 tabstop=4
-
-autocmd FileType yaml,toml setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 textwidth=80 colorcolumn=80
 autocmd FileType sh setlocal expandtab shiftwidth=4 tabstop=4
+autocmd FileType toml,yaml setlocal expandtab shiftwidth=2 tabstop=2
 
 let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
