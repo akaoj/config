@@ -19,3 +19,9 @@
 [submodule ".config/nvim/bundle/ultisnips"]
 	path = .config/nvim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
+[submodule ".config/nvim/bundle/vim-gutentags"]
+	path = .config/nvim/bundle/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule ".config/nvim/bundle/ctrlp.vim"]
+	path = .config/nvim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git

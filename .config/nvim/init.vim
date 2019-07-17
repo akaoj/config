@@ -95,3 +95,6 @@ let g:ycm_key_list_stop_completion = ['<Up>', '<Down>']
 let g:UltiSnipsExpandTrigger = "<S-Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-n>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
+
+let g:gutentags_cache_dir = "~/.config/nvim/tags"
+let g:gutentags_exclude_filetypes = ["gitcommit"]  " prevent error when commiting with vim/neovim
