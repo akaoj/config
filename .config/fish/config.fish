@@ -29,7 +29,7 @@ abbr -a gwd "git diff --word-diff=color --word-diff-regex=. origin/master"  # "g
 # Tooling
 abbr -a f "fzf --preview='head -n $LINES {}' --tabstop=4 --multi | xargs --no-run-if-empty -- $EDITOR"
 abbr -a k "kubectl"
-abbr -a l "less -SM +Gg -R"
+abbr -a l "ls -alh"
 abbr -a tf "terraform"
 abbr -a v "nvim"
 
