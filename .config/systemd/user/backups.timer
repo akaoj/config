@@ -1,0 +1,10 @@
+[Unit]
+Description=Duplicity backups
+
+[Timer]
+# Every 6 hours, starting at 8AM
+OnCalendar=*-*-* 08/6:00:00
+Unit=backups.service
+
+[Install]
+WantedBy=multi-user.target

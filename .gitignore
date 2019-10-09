@@ -15,3 +15,10 @@
 !/.config/fish
 !/.config/fish/**
 /.config/fish/fishd.*
+
+# systemd
+!/.config/systemd/
+!/.config/systemd/user/
+!/.config/systemd/user/backups.service
+!/.config/systemd/user/backups.timer
+!/.config/systemd/user/backups-notify-failure.service

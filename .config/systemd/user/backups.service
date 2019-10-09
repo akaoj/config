@@ -1,0 +1,13 @@
+[Unit]
+Description=Duplicity backups
+After=network-online.target
+Wants=network-online.target
+OnFailure=backups-notify-failure.service
+
+[Service]
+Type=simple
+EnvironmentFile=/home/val/.backups.env
+ExecStart=/usr/bin/duplicity --verbosity notice --num-retries 3 --asynchronous-upload --cf-backend swift $DUP_OPTS "$SRC" "$DEST"
+
+[Install]
+WantedBy=multi-user.target
