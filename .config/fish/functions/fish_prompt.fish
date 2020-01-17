@@ -1,26 +1,33 @@
 # Overwrite default prompt
 function fish_prompt
 	set -l _last_status (echo $status)
-	set -l _arrow_color 00EE00 -o  # green by default
-	set -l _date_color A0A0A0 -o  # bold greyish
 
-	set -l _git_branch_color BBBBBB  # white
 	set -l _hostname_color 525252 -o  # bold light grey
 	set -l _pwd_color 525252  # light grey
-
 	set -l _jobs_color c54f00  # brown orange
+	set -l _date_color A0A0A0 -o  # bold greyish
+	set -l _arrow_color 00EE00 -o  # green by default
 
-	set -l _k8s_color
+	# Git-related
+	set -l _git_branch_color BBBBBB  # greyish white
+
+	# Kubernetes-related
+	set -l _k8s_contexts_colors_file "$HOME/.config/fish/k8s_contexts.fish"
+	set -l _k8s_color A0A0A0  # default color is greyish
 	set -l _k8s_context (k8s_get_context)
 
-	if [ "$_k8s_context" = "prod" ]
-		set _k8s_color FF0000 -o  # bold red
-	else if [ "$_k8s_context" = "preprod" ]
-		set _k8s_color FFFF00  # yellow
-	else if [ "$_k8s_context" = "dev" ]
-		set _k8s_color 00FF00  # green
-	else
-		set _k8s_color FF00FF  # magenta
+	# Load custom Kubernetes contexts colors, if any
+	if test -e "$_k8s_contexts_colors_file"
+		source "$_k8s_contexts_colors_file"
+
+		for _ctx in $k8s_contexts
+			set -l _ctx_data (echo "$_ctx" | tr ':' '\n')
+			if test "$_k8s_context" = "$_ctx_data[1]"
+				# If the current context match a context from the custom contexts, display the given color
+				set _k8s_color "$_ctx_data[2]"
+				break
+			end
+		end
 	end
 
 	# If root, print date in bold red
