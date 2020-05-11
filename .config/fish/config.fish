@@ -33,5 +33,8 @@ abbr -a l "ls -alh"
 abbr -a tf "terraform"
 abbr -a v "nvim"
 
+# You should use a personal journal
+abbr -a journal "$EDITOR ~/journals/(date --iso-8601=date).md"
+
 # Make ssh-add work
 setenv SSH_ENV $HOME/.ssh/environment
