@@ -1,5 +1,9 @@
 set -x EDITOR nvim
 
+# Add the local binary folder to the PATH
+set --prepend --export PATH ~/.local/bin
+
+
 #################
 # Abbreviations #
 #################
