@@ -99,3 +99,5 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 
 let g:gutentags_cache_dir = "~/.config/nvim/tags"
 let g:gutentags_exclude_filetypes = ["gitcommit"]  " prevent error when commiting with vim/neovim
+
+lua require'colorizer'.setup()
