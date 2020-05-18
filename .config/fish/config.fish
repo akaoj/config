@@ -23,12 +23,12 @@ abbr -a gb   "git branch"
 abbr -a gc   "git commit"
 abbr -a gd   "git diff HEAD"
 abbr -a gdm  "git diff origin/master"  # "git diff master"
-abbr -a gdo  "git diff "(git_get_remote_branch)  # "git diff origin": displays diff between current working set and origin/<branch>
+abbr -a gdo  "git diff (git_get_remote_branch)"  # "git diff origin": displays diff between current working set and origin/<branch>
 abbr -a gdw  "git diff --word-diff=color --word-diff-regex=. HEAD"  # "git diff word": displays diffs like online tools (i.e.: GitHub or GitLab)
 abbr -a gdwm "git diff --word-diff=color --word-diff-regex=. origin/master"  # "git diff word master": displays diffs like online tools (i.e.: GitHub or GitLab) against origin/master
 abbr -a gk   "git checkout"
 abbr -a gl   "git log"
-abbr -a glo  "git log "(git_get_remote_branch)".."  # "git log origin": displays commits added on top of remote branch
+abbr -a glo  "git log (git_get_remote_branch).."  # "git log origin": displays commits added on top of remote branch
 abbr -a glm  "git log origin/master.."  # "git log master": displays commits added on top of master
 abbr -a glv  "git log --oneline --decorate --all --graph"  # "git log visual": displays visual log
 abbr -a gp   "git push"
