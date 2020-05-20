@@ -5,7 +5,6 @@ set nomodeline
 
 " Tabs
 set shiftwidth=4  " Make an indent correspond to 4 spaces
-set textwidth=0   " Disable line wrapping
 set noexpandtab   " Do not replace tabs with spaces
 set tabstop=4     " Display a tab as 4 spaces wide
 
@@ -23,7 +22,10 @@ set smartcase
 set foldmethod=indent
 set foldlevel=99
 
-set colorcolumn=120  " display a vertical line at 120 characters
+" Default textwidth at 120 characters
+set textwidth=120
+" Display a vertical line just after the max textwidth (this might change depending on the current file)
+set colorcolumn=+1
 
 set linebreak  " do not split words over 2 lines
 set breakindent  " set the same indentation to the broke line than the original one
@@ -69,19 +71,9 @@ let g:ale_python_pylint_executable = 'pylint-3'
 " Disable import errors with Pylint
 let g:ale_python_pylint_options = '--disable E0401'
 
-autocmd FileType jinja setlocal expandtab shiftwidth=4 tabstop=4
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 textwidth=80 colorcolumn=80
-autocmd FileType sh setlocal expandtab shiftwidth=4 tabstop=4
-autocmd FileType toml,yaml setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType gitcommit setlocal colorcolumn=72
-autocmd FileType make setlocal colorcolumn=100
-
 let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
-" Display Syntastic errors with :lopen
-"let g:syntastic_always_populate_loc_list = 1
 
 colorscheme solarized
 
